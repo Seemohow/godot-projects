@@ -2,9 +2,9 @@ using Godot;
 using System;
 
 public partial class Player : CharacterBody3D {
-	private readonly float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").As<float>();
+	private readonly float gravity = 35.0f;
 
-	private const float jumpForce = 10.0f;
+	private const float jumpForce = 23.0f;
 
 	private Label label;
 	
