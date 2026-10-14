@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dqnnk454pwolf"]
 
+[ext_resource type="Script" uid="uid://cqd3nlnxunvfi" path="res://scenes/player/Player.cs" id="1_8afob"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x7p2l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nbn7b"]
@@ -8,6 +10,7 @@ albedo_color = Color(0.85882354, 0.8117647, 0.24705882, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_dkbdu"]
 
 [node name="Player" type="CharacterBody3D" unique_id=246716200]
+script = ExtResource("1_8afob")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=875551486]
 shape = SubResource("CapsuleShape3D_x7p2l")
@@ -15,3 +18,12 @@ shape = SubResource("CapsuleShape3D_x7p2l")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1535475001]
 material_override = SubResource("StandardMaterial3D_nbn7b")
 mesh = SubResource("CapsuleMesh_dkbdu")
+
+[node name="Label" type="Label" parent="." unique_id=1621655984]
+offset_left = 31.0
+offset_top = 33.0
+offset_right = 71.0
+offset_bottom = 56.0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 48
+text = "00000"
