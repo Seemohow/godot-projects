@@ -52,9 +52,8 @@ _data = {
 &"vanish": SubResource("Animation_nlgqw")
 }
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_qextx"]
-height = 0.3
-radius = 1.5
+[sub_resource type="BoxShape3D" id="BoxShape3D_lnu2h"]
+size = Vector3(2.9, 0.5, 2.9)
 
 [node name="Platform" type="Node3D" unique_id=10122524]
 script = ExtResource("1_ba0x2")
@@ -79,7 +78,8 @@ libraries/ = SubResource("AnimationLibrary_507ja")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21246016, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1081162418]
-shape = SubResource("CylinderShape3D_qextx")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007, -0.12200752, 0)
+shape = SubResource("BoxShape3D_lnu2h")
 
 [connection signal="timeout" from="Timer" to="." method="_On_Timer_Timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_On_Animation_Finished"]
