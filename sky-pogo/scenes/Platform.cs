@@ -6,7 +6,6 @@ public partial class Platform : Node3D {
 	private AnimationPlayer animationPlayer;
 	private Timer timer;
 	private bool isHit = false;
-	[Signal] public delegate void NewPlatformEventHandler(Vector3 platformPosition);
 	
 	public override void _Ready() {
 		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
@@ -27,7 +26,7 @@ public partial class Platform : Node3D {
 		if (body is Player && !isHit) {
 			isHit = true;
 			timer.Start();
-			EmitSignal(SignalName.NewPlatform, Position);
+			SignalHub.EmitNewPlatform(Position);
 		}
 	}
 }
