@@ -2,17 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ckrfpvsha81ep" path="res://scenes/Platform.cs" id="1_ba0x2"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nbn7b"]
-albedo_color = Color(0.3749316, 0.33277434, 0.33275655, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_dkbdu"]
-material = SubResource("StandardMaterial3D_nbn7b")
-size = Vector3(3, 0.5, 3)
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dkbdu"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_dkbdu"]
-size = Vector3(3, 0.5, 3)
 
 [sub_resource type="Animation" id="Animation_ba0x2"]
 length = 0.001
@@ -52,20 +42,15 @@ _data = {
 &"vanish": SubResource("Animation_nlgqw")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_lnu2h"]
-size = Vector3(2.9, 0.5, 2.9)
-
 [node name="Platform" type="Node3D" unique_id=10122524]
 script = ExtResource("1_ba0x2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=37625051]
-mesh = SubResource("BoxMesh_dkbdu")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1444851331]
 physics_material_override = SubResource("PhysicsMaterial_dkbdu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=60698507]
-shape = SubResource("BoxShape3D_dkbdu")
 
 [node name="Timer" type="Timer" parent="." unique_id=155077269]
 wait_time = 1.4
@@ -79,7 +64,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21246016, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1081162418]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007, -0.12200752, 0)
-shape = SubResource("BoxShape3D_lnu2h")
 
 [connection signal="timeout" from="Timer" to="." method="_On_Timer_Timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_On_Animation_Finished"]
