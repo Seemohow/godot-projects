@@ -2,17 +2,23 @@ using Godot;
 using System;
 
 public partial class Player : CharacterBody3D {
-	private readonly float gravity = 30.0f;
+	private readonly float gravity = 33.0f;
 	private AnimationPlayer animationPlayer;
-	private const float jumpForce = 23.0f;
+	private AudioStreamPlayer audioPlayer;
+	private const float jumpForce = 21.0f;
 	private const float rotationSpeed = 10.0f;
 	private const float moveSpeed = 8.0f;
 	private Vector2 inputDirection = Vector2.Zero;
+	private readonly float fallOffMargin = 20.0f;
+	private float fallOffY;
+	private Boolean fellOff = false;
 
 	
 	public override void _Ready()
 	{
 		animationPlayer = GetNode<AnimationPlayer>("character-male-d2/AnimationPlayer");
+		audioPlayer = GetNode<AudioStreamPlayer>("FallEffect");
+		fallOffY = Position.Y - fallOffMargin;
 	}
 
 	public override void _PhysicsProcess(double delta) {
@@ -21,6 +27,14 @@ public partial class Player : CharacterBody3D {
 		HandleRotation(delta);
 		MoveAndSlide();
 		HandleAnimation();
+		HandleFall();
+	}
+
+	private void HandleFall() {
+		if (Position.Y < fallOffY && !fellOff) {
+			fellOff = true;
+			audioPlayer.Play();
+		}
 	}
 
 	private void HandleAnimation() {
@@ -65,6 +79,9 @@ public partial class Player : CharacterBody3D {
 			Velocity = velocity;
 		}
 	}
-	
+
+	public void _On_Fall_Effect_Finished() {
+		GD.Print("Game Over");
+	}
 	
 }

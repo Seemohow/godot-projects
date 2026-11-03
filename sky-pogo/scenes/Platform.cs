@@ -4,11 +4,13 @@ using System;
 public partial class Platform : Node3D {
 	
 	private AnimationPlayer animationPlayer;
+	private AudioStreamPlayer audioPlayer;
 	private Timer timer;
 	private bool isHit = false;
 	
 	public override void _Ready() {
 		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		audioPlayer = GetNode<AudioStreamPlayer>("LandEffect");
 		timer = GetNode<Timer>("Timer");
 	}
 	
@@ -26,6 +28,7 @@ public partial class Platform : Node3D {
 		if (body is Player && !isHit) {
 			isHit = true;
 			timer.Start();
+			audioPlayer.Play();
 			SignalHub.EmitNewPlatform(Position);
 		}
 	}
