@@ -36,4 +36,8 @@ public partial class Spawner : Node {
 	public void _On_New_Platform(Vector3 position) {
 		SpawnPlatform(position);
 	}
+
+	public override void _ExitTree() {
+		SignalHub.Instance.NewPlatform -= _On_New_Platform;
+	}
 }

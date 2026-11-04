@@ -27,4 +27,8 @@ public partial class PlayerCam : Camera3D
 	private void AdjustPosition(Vector3 position) {
 		basePosition = buffer + position;
 	}
+	
+	public override void _ExitTree() {
+		SignalHub.Instance.NewPlatform -= _On_New_Platform;
+	}
 }

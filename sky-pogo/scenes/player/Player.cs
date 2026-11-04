@@ -81,7 +81,7 @@ public partial class Player : CharacterBody3D {
 	}
 
 	public void _On_Fall_Effect_Finished() {
-		GD.Print("Game Over");
+		SignalHub.EmitGameOver();
 	}
 	
 }

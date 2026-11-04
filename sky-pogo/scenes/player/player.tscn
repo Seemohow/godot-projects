@@ -2786,6 +2786,6 @@ libraries/ = SubResource("AnimationLibrary_71k72")
 
 [node name="FallEffect" type="AudioStreamPlayer" parent="." unique_id=662422490]
 stream = ExtResource("3_gmlin")
-volume_db = -10.0
+volume_db = -14.0
 
 [connection signal="finished" from="FallEffect" to="." method="_On_Fall_Effect_Finished"]

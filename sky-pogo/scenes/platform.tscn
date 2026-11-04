@@ -80,7 +80,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007, -0.12200752, 0)
 
 [node name="LandEffect" type="AudioStreamPlayer" parent="." unique_id=570767598]
 stream = SubResource("AudioStreamRandomizer_dkbdu")
-volume_db = -10.0
+volume_db = -20.0
 
 [connection signal="timeout" from="Timer" to="." method="_On_Timer_Timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_On_Animation_Finished"]

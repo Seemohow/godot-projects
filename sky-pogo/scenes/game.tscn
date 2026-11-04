@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dqnnk454pwolf" path="res://scenes/player/player.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dyv0qqyjd0ixj" path="res://scenes/player_cam/player_cam.tscn" id="4_lbhrr"]
 [ext_resource type="AudioStream" uid="uid://b06epusrpn0go" path="res://assets/audio/Arroz Con Pollo.mp3" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://1tpwfphfjiep" path="res://scenes/game_ui.tscn" id="6_p57ef"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lnu2h"]
 panorama = ExtResource("1_uwrxv")
@@ -38,6 +39,9 @@ buffer = Vector3(0, 10, -14)
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=287849875]
 stream = ExtResource("5_iywne")
-volume_db = -22.0
+volume_db = -27.0
 autoplay = true
 parameters/looping = true
+
+[node name="GameUI" parent="." unique_id=768197268 instance=ExtResource("6_p57ef")]
+process_mode = 3
