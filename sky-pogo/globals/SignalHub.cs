@@ -7,6 +7,7 @@ public partial class SignalHub : Node
 	
 	[Signal] public delegate void NewPlatformEventHandler(Vector3 platformPosition);
 	[Signal] public delegate void GameOverEventHandler();
+	[Signal] public delegate void NewHeightEventHandler(int height);
 	
 	public override void _Ready() {
 		Instance = this;
@@ -18,5 +19,9 @@ public partial class SignalHub : Node
 	
 	public static void EmitGameOver() {
 		Instance.EmitSignal("GameOver");
+	}
+	
+	public static void EmitNewHeight(int height) {
+		Instance.EmitSignal("NewHeight", height);
 	}
 }

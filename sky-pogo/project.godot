@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SignalHub="*uid://gb7ogg2mbfrb"
+ScoreManager="*uid://m80yifr27xmw"
 
 [display]
 

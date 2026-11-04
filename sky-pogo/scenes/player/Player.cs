@@ -12,6 +12,8 @@ public partial class Player : CharacterBody3D {
 	private readonly float fallOffMargin = 20.0f;
 	private float fallOffY;
 	private Boolean fellOff = false;
+	private float bestHeight = 0;
+	private float startY;
 
 	
 	public override void _Ready()
@@ -19,6 +21,7 @@ public partial class Player : CharacterBody3D {
 		animationPlayer = GetNode<AnimationPlayer>("character-male-d2/AnimationPlayer");
 		audioPlayer = GetNode<AudioStreamPlayer>("FallEffect");
 		fallOffY = Position.Y - fallOffMargin;
+		startY = Position.Y;
 	}
 
 	public override void _PhysicsProcess(double delta) {
@@ -27,9 +30,18 @@ public partial class Player : CharacterBody3D {
 		HandleRotation(delta);
 		MoveAndSlide();
 		HandleAnimation();
+		UpdateHeight();
 		HandleFall();
 	}
 
+	private void UpdateHeight() {
+		int currentHeight = Mathf.RoundToInt((Position.Y - startY) * 20);
+		if (currentHeight > bestHeight) {
+			bestHeight = currentHeight;
+			SignalHub.EmitNewHeight((int)bestHeight);
+		}
+	}
+	
 	private void HandleFall() {
 		if (Position.Y < fallOffY && !fellOff) {
 			fellOff = true;
